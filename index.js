@@ -35,4 +35,19 @@ const putData = async () => {
   console.log(putResponse.data);
 };
 
-putData();
+//putData();
+
+const patchData = async () => {
+  // it will just update or add the field value not replace the whole obj
+  // patch will replace the whole dat
+  const patchResponse = await axios.patch(
+    "https://jsonplaceholder.typicode.com/users/1",
+    {
+      name: "muntasir",
+      username: "Muntasir",
+    }
+  );
+  console.log(patchResponse.data);
+};
+
+patchData();
