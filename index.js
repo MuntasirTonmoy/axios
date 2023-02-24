@@ -50,4 +50,13 @@ const patchData = async () => {
   console.log(patchResponse.data);
 };
 
-patchData();
+//patchData();
+
+const deleteData = async () => {
+  const deleteResponse = await axios.delete(
+    "https://jsonplaceholder.typicode.com/users/1"
+  );
+  console.log(deleteResponse.data);
+};
+
+deleteData();
