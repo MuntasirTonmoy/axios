@@ -22,4 +22,17 @@ const postData = async () => {
   console.log(postResponse.data);
 };
 
-postData();
+//postData();
+
+const putData = async () => {
+  // put will replace the whole dat
+  const putResponse = await axios.put(
+    "https://jsonplaceholder.typicode.com/users/1",
+    {
+      name: "muntasir",
+    }
+  );
+  console.log(putResponse.data);
+};
+
+putData();
