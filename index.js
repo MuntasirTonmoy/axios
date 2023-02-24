@@ -10,4 +10,16 @@ async function fetchData() {
   }
 }
 
-fetchData();
+//fetchData();
+
+const postData = async () => {
+  const postResponse = await axios.post(
+    "https://jsonplaceholder.typicode.com/users",
+    {
+      name: "muntasir",
+    }
+  );
+  console.log(postResponse.data);
+};
+
+postData();
