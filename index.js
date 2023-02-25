@@ -59,4 +59,16 @@ const deleteData = async () => {
   console.log(deleteResponse.data);
 };
 
-deleteData();
+//deleteData();
+
+//simultaneous request
+const simultaneousData = async () => {
+  const [users, todos] = await axios.all([
+    axios.get("https://jsonplaceholder.typicode.com/users"),
+    axios.get("https://jsonplaceholder.typicode.com/todos?_limit=1"),
+  ]);
+
+  console.log(todos);
+};
+
+//simultaneousData();
