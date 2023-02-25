@@ -1,5 +1,13 @@
 const { default: axios } = require("axios");
 
+// custom headers
+const config = {
+  headers: {
+    "Content-type": "application/json",
+    Authorization: "some token",
+  },
+};
+
 async function fetchData() {
   try {
     const response = await axios("https://jsonplaceholder.typicode.com/users");
@@ -17,9 +25,10 @@ const postData = async () => {
     "https://jsonplaceholder.typicode.com/users",
     {
       name: "muntasir",
-    }
+    },
+    config
   );
-  console.log(postResponse.data);
+  console.log(postResponse);
 };
 
 //postData();
@@ -72,3 +81,14 @@ const simultaneousData = async () => {
 };
 
 //simultaneousData();
+
+// interceptors
+axios.interceptors.request.use(
+  config => {
+    console.log(
+      `${config.method.toUpperCase()} request sent at ${new Date().getTime()}`
+    );
+    return config;
+  },
+  err => Promise.reject(err)
+);
