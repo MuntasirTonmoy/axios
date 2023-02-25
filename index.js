@@ -1,5 +1,8 @@
 const { default: axios } = require("axios");
 
+//Globals
+axios.defaults.headers.common["X-Auth-Token"] = "xsfsdfASDF";
+
 // custom headers
 const config = {
   headers: {
@@ -92,3 +95,22 @@ axios.interceptors.request.use(
   },
   err => Promise.reject(err)
 );
+
+//transfor response -> format response data
+const transformResponse = async () => {
+  const res = await axios.post(
+    "https://jsonplaceholder.typicode.com/todos",
+    {
+      title: "muntasir",
+    },
+    {
+      transformResponse: axios.defaults.transformResponse.concat(data => {
+        data.title = data.title.toUpperCase();
+        return data;
+      }),
+    }
+  );
+  console.log(res.data);
+};
+
+transformResponse();
